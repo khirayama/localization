@@ -1,0 +1,19 @@
+{
+  "name": "localization",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava",
+    "test:watch": "ava -w"
+  },
+  "dependencies": {
+    "ajv": "^5.0.0",
+    "ava": "^0.19.1"
+  },
+  "ava": {
+    "files": [
+      "./src/**/__tests__/**/*.js"
+    ]
+  }
+}
