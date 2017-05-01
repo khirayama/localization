@@ -1121,6 +1121,10 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     mkdirp ">=0.5 0"
     rimraf "2"
 
+fuse.js@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.0.0.tgz#7b6c0b177f6ffc6421e4f229843b3f70a21b1ac5"
+
 gauge@~2.7.1:
   version "2.7.4"
   resolved "https://registry.yarnpkg.com/gauge/-/gauge-2.7.4.tgz#2c03405c7538c39d7eb37b317022e325fb018bf7"
