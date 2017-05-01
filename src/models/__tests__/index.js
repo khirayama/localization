@@ -6,25 +6,36 @@ const Sample = Object.assign({
   data: [{
     id: 1,
     name: 'sample 1 aaa',
+    keywords: ['1st', 'first', '一番目', '最初'],
   }, {
     id: 2,
     name: 'sample 2 aab',
+    keywords: ['2nd', 'second', '二番目'],
   }, {
     id: 3,
     name: 'sample 3 aac',
+    keywords: ['3rd', 'third', '三番目'],
   }, {
     id: 4,
     name: 'sample 4 abb',
+    keywords: ['4th', 'fourth', '四番目'],
   }, {
     id: 5,
     name: 'sample 5 abc',
+    keywords: ['5th', 'fifth', '五番目', '最後'],
   }],
   schema: {
     id: {
-      type: "number",
+      type: 'number',
     },
     name: {
-      type: "string",
+      type: 'string',
+    },
+    keywords: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
     },
   },
 }, Model);
@@ -73,6 +84,7 @@ test('Model.find(object)', t => {
   t.deepEqual(sample, {
     id: 1,
     name: 'sample 1 aaa',
+    keywords: ['1st', 'first', '一番目', '最初'],
   });
 });
 
@@ -90,27 +102,23 @@ test('Model.search', t => {
   t.is(samples.length, 1);
   t.deepEqual(samples[0], {
     id: 5,
-    name: 'sample 5 abc'
+    name: 'sample 5 abc',
+    keywords: ['5th', 'fifth', '五番目', '最後'],
   });
 
   samples = Sample.search('zamp 34 ab');
 
   t.true(Sample.valid(samples));
   t.is(samples.length, 5);
-  t.deepEqual(samples, [{
-    id: 4,
-    name: 'sample 4 abb',
-  }, {
-    id: 3,
-    name: 'sample 3 aac',
-  }, {
-    id: 5,
-    name: 'sample 5 abc',
-  }, {
-    id: 1,
-    name: 'sample 1 aaa',
-  }, {
-    id: 2,
-    name: 'sample 2 aab',
-  }]);
+  t.deepEqual(samples.map(sample => {
+    return sample.id;
+  }), [4, 3, 5, 1, 2]);
+
+  samples = Sample.search('rd');
+
+  t.true(Sample.valid(samples));
+  t.is(samples.length, 4);
+  t.deepEqual(samples.map(sample => {
+    return sample.id;
+  }), [3, 1, 2, 4]);
 });
