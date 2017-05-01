@@ -2,6 +2,25 @@ const Ajv = require('ajv');
 const ajv = new Ajv();
 const Fuse = require('fuse.js');
 
+function getKeys(schema) {
+  const keys = Object.keys(schema);
+  return Array.prototype.concat.apply([],
+    keys.map(key => {
+      switch(schema[key].type) {
+        case 'object': {
+          return getKeys(schema[key].properties).map(property => {
+            return key + '.' + property;
+          });
+        }
+        default: {
+          // string, number, array
+          return key;
+        }
+      }
+    })
+  );
+}
+
 const Model = {
   valid: function(target) {
     let validate = null;
@@ -54,7 +73,7 @@ const Model = {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: Object.keys(this.schema),
+      keys: getKeys(this.schema),
     };
     if (options) {
       options_ = options;
