@@ -5,23 +5,38 @@ const Model = require('../index');
 const Sample = Object.assign({
   data: [{
     id: 1,
-    name: 'sample 1 aaa',
+    name: {
+      ja: 'sample 1 aaa',
+      en: 'sample 1 aaa',
+    },
     keywords: ['1st', 'first', '一番目', '最初'],
   }, {
     id: 2,
-    name: 'sample 2 aab',
+    name: {
+      ja: 'sample 2 aab',
+      en: 'sample 2 aab',
+    },
     keywords: ['2nd', 'second', '二番目'],
   }, {
     id: 3,
-    name: 'sample 3 aac',
+    name: {
+      ja: 'sample 3 aac',
+      en: 'sample 3 aac',
+    },
     keywords: ['3rd', 'third', '三番目'],
   }, {
     id: 4,
-    name: 'sample 4 abb',
+    name: {
+      ja: 'sample 4 abb',
+      en: 'sample 4 abb',
+    },
     keywords: ['4th', 'fourth', '四番目'],
   }, {
     id: 5,
-    name: 'sample 5 abc',
+    name: {
+      ja: 'sample 5 abc',
+      en: 'sample 5 abc',
+    },
     keywords: ['5th', 'fifth', '五番目', '最後'],
   }],
   schema: {
@@ -29,7 +44,15 @@ const Sample = Object.assign({
       type: 'number',
     },
     name: {
-      type: 'string',
+      type: 'object',
+      properties: {
+        ja: {
+          type: 'string',
+        },
+        en: {
+          type: 'string',
+        }
+      },
     },
     keywords: {
       type: 'array',
@@ -81,11 +104,7 @@ test('Model.find(object)', t => {
   const sample = Sample.find({id: 1});
 
   t.true(Sample.valid(sample));
-  t.deepEqual(sample, {
-    id: 1,
-    name: 'sample 1 aaa',
-    keywords: ['1st', 'first', '一番目', '最初'],
-  });
+  t.deepEqual(sample, Sample.all()[0]);
 });
 
 test('Model.search', t => {
@@ -100,11 +119,7 @@ test('Model.search', t => {
 
   t.true(Sample.valid(samples));
   t.is(samples.length, 1);
-  t.deepEqual(samples[0], {
-    id: 5,
-    name: 'sample 5 abc',
-    keywords: ['5th', 'fifth', '五番目', '最後'],
-  });
+  t.deepEqual(samples[0], Sample.all()[4]);
 
   samples = Sample.search('zamp 34 ab');
 
