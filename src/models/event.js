@@ -4,30 +4,38 @@ const Event = Object.assign({
   data: require('../data/events'),
   schema: {
     id: {
-      type: "number",
+      type: 'number',
     },
     eventTypeId: {
-      type: "number",
+      type: 'number',
     },
     name: {
-      type: "string",
+      type: 'object',
+      properties: {
+        ja: {
+          type: 'string',
+        },
+        en: {
+          type: 'string',
+        }
+      },
     },
     url: {
-      type: "array",
+      type: 'array',
       items: {
-        type: "string",
+        type: 'string',
       },
     },
     schedule: {
-      type: "array",
+      type: 'array',
       items: {
-        type: "string",
+        type: 'string',
       },
     },
     keywords: {
-      type: "array",
+      type: 'array',
       items: {
-        type: "string",
+        type: 'string',
       },
     },
   },
