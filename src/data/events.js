@@ -1,4 +1,5 @@
 const keywords = require('./constants/keywords');
+const schedules = require('./constants/schedules');
 
 const events = [{
   id: 1,
@@ -7,7 +8,11 @@ const events = [{
   url: [
     'http://www.dontaku.fukunet.or.jp/',
   ],
-  schedule: '毎年5/3、5/4',
+  schedule: [
+    schedules.period.ANNUAL,
+    '5/3',
+    '5/4',
+  ],
   keywords: [
     keywords.season.SUMMER,
     keywords.month.MAY,
