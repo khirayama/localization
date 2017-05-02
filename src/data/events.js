@@ -7,7 +7,7 @@ const events = [{
   name: {
     ja: '博多どんたく港まつり',
     en: 'Hakata Dontaku',
-  }
+  },
   url: [
     'http://www.dontaku.fukunet.or.jp/',
     'https://twitter.com/HAKATA_DONTAK://twitter.com/HAKATA_DONTAKU',
