@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "console": "node console.js",
+    "c": "npm run console",
     "test": "ava",
     "test:watch": "ava -w"
   },
