@@ -1,7 +1,7 @@
 const Model = require('./index');
 
 const Event = Object.assign({
-  data: require('../data/events'),
+  data: require('../database/events'),
   schema: {
     id: {
       type: 'number',
