@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "bundle": "rm -rf dist && mkdir dist && cp src/index.html dist/index.html && node bin/create-index.js && browserify src/index.js -o dist/bundle.js",
+    "bundle": "rm -rf dist && mkdir dist && cp src/index.html dist/index.html && node bin/create-index.js && browserify src/client.js -o dist/bundle.js",
     "console": "node bin/console.js",
     "c": "npm run console",
     "test": "ava",
