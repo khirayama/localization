@@ -1,9 +1,9 @@
 const eventTypes = [{
   id: 1,
-  name: 'event',
+  nameKey: 'EVENT'
 }, {
   id: 2,
-  name: 'live',
+  nameKey: 'LIVE'
 }];
 
 module.exports = eventTypes;
