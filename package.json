@@ -4,6 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "npm run dev",
+    "dev": "rm -rf dist && npm run compile:scripts && (npm run compile:scripts:watch & npm run bundle:scripts:watch & nodemon dist/server.js)",
+    "compile:scripts": "babel src --out-dir dist --ignore src/client.js",
+    "compile:scripts:watch": "babel src --out-dir dist -w --source-maps inline --ignore src/client.js",
+    "bundle:scripts": "webpack -p",
+    "bundle:scripts:watch": "webpack -w",
+    "server": "node src/server.js",
     "bundle": "rm -rf dist && mkdir dist && cp src/index.html dist/index.html && node bin/create-index.js && browserify src/client.js -o dist/bundle.js",
     "console": "node bin/console.js",
     "c": "npm run console",
