@@ -9,16 +9,8 @@ const Event = Object.assign({
     eventTypeId: {
       type: 'number',
     },
-    name: {
-      type: 'object',
-      properties: {
-        ja: {
-          type: 'string',
-        },
-        en: {
-          type: 'string',
-        }
-      },
+    nameKey: {
+      type: 'string',
     },
     url: {
       type: 'array',
@@ -32,7 +24,7 @@ const Event = Object.assign({
         type: 'string',
       },
     },
-    keywords: {
+    keywordKeys: {
       type: 'array',
       items: {
         type: 'string',

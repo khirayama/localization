@@ -7,15 +7,7 @@ const EventType = Object.assign({
       type: 'number',
     },
     name: {
-      type: 'object',
-      properties: {
-        ja: {
-          type: 'string',
-        },
-        en: {
-          type: 'string',
-        },
-      },
+      type: 'string',
     },
   },
 }, Model);
