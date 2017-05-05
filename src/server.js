@@ -18,11 +18,14 @@ const host = process.env.HOST || '127.0.0.1';
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
+  const state = {
+  };
+
   res.send(
     template(
       'Localization',
       ReactDOMServer.renderToString(<HomePage />),
-      {}
+      state
     )
   );
 });
